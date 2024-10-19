@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-const cores = {
+export const cores = {
   laranja: '#E66767',
   cremeClaro: '#FFF8F2',
   cremeEscuro: '#FFEBD9',
@@ -22,4 +22,10 @@ export const GlobalCss = createGlobalStyle`
     background-color: ${cores.cremeClaro};
     color: ${cores.laranja}
   }
+`
+
+export const Container = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 `
