@@ -3,6 +3,7 @@ import Menu from '../../models/Menu'
 
 import sushi from '../../asset/images/sushi.svg'
 import camarao from '../../asset/images/camarao.svg'
+import Header from '../../components/Header'
 
 const cardapio: Menu[] = [
   {
@@ -63,6 +64,7 @@ const cardapio: Menu[] = [
 
 const Perfil = () => (
   <>
+    <Header />
     <RestaurantList menus={cardapio} title="Promoções" background="gray" />
   </>
 )
