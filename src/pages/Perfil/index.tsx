@@ -5,6 +5,7 @@ import sushi from '../../asset/images/sushi.svg'
 import camarao from '../../asset/images/camarao.svg'
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
+import Footer from '../../components/Footer'
 
 const cardapio: Menu[] = [
   {
@@ -68,6 +69,7 @@ const Perfil = () => (
     <Header />
     <Banner />
     <RestaurantList menus={cardapio} title="Promoções" background="gray" />
+    <Footer />
   </>
 )
 

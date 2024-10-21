@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -25,7 +24,7 @@ export const Categoria = styled.p`
   font-weight: 100;
 `
 
-export const Titulo = styled.h2`
+export const Titulo = styled.p`
   font-size: 36px;
   color: ${cores.branca};
   padding-top: 156px;
