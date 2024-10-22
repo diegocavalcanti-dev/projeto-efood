@@ -85,11 +85,7 @@ const Perfil = () => (
   <>
     <Header />
     <Banner />
-    <ItemsList
-      menusItems={cardapioPerfil}
-      title="Promoções"
-      background="gray"
-    />
+    <ItemsList menusItems={cardapioPerfil} title="Promoções" />
     <Footer />
   </>
 )

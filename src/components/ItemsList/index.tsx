@@ -5,11 +5,10 @@ import { Container, List } from './styles'
 
 type Props = {
   title: string
-  background: 'gray' | 'black'
   menusItems: MenuPerfil[]
 }
 
-const ItemsList = ({ background, title, menusItems }: Props) => (
+const ItemsList = ({ title, menusItems }: Props) => (
   <Container>
     <List>
       {menusItems.map((menu) => (
