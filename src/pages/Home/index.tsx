@@ -1,12 +1,12 @@
 import RestaurantList from '../../components/RestaurantList'
-import Menu from '../../models/Menu'
+import MenuHome from '../../models/MenuHome'
 
 import sushi from '../../asset/images/sushi.svg'
 import camarao from '../../asset/images/camarao.svg'
 import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
 
-const cardapio: Menu[] = [
+const cardapio: MenuHome[] = [
   {
     id: 1,
     categories: ['Destaque da semana', 'Japonesa'],

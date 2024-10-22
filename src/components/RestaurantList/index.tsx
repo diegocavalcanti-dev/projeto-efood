@@ -1,4 +1,4 @@
-import Menu from '../../models/Menu'
+import MenuHome from '../../models/MenuHome'
 import Restaurant from '../Restaurant'
 
 import { Container, List } from './styles'
@@ -6,7 +6,7 @@ import { Container, List } from './styles'
 type Props = {
   title: string
   background: 'gray' | 'black'
-  menus: Menu[]
+  menus: MenuHome[]
 }
 
 const RestaurantList = ({ background, title, menus }: Props) => (

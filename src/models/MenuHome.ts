@@ -1,4 +1,4 @@
-class Menu {
+class MenuHome {
   title: string
   rate: number
   categories: string[]
@@ -23,4 +23,4 @@ class Menu {
   }
 }
 
-export default Menu
+export default MenuHome
