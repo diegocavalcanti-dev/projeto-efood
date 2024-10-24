@@ -11,7 +11,7 @@ const Items = ({ image, title, description }: Props) => (
     <img src={image} alt={title} />
     <Titulo>{title}</Titulo>
     <Descricao>{description}</Descricao>
-    <AddCarrinho to="">Adicionar ao carrinho</AddCarrinho>
+    <AddCarrinho to="/">Adicionar ao carrinho</AddCarrinho>
   </Card>
 )
 
