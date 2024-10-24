@@ -1,17 +1,27 @@
-import { AddCarrinho, Card, Descricao, Titulo } from './styles'
+import { AddCarrinho, Card, Descricao, Photo, Titulo } from './styles'
 
-type Props = {
+export type Props = {
   image: string
   title: string
   description: string
+  photoAlt: string
 }
 
-const Items = ({ image, title, description }: Props) => (
+export const lowerDescription = (description: string) => {
+  if (description.length > 128) {
+    return description.slice(0, 121) + '...'
+  }
+  return description
+}
+
+const Items = ({ image, title, description, photoAlt }: Props) => (
   <Card>
-    <img src={image} alt={title} />
+    <Photo src={image} alt={photoAlt} />
     <Titulo>{title}</Titulo>
-    <Descricao>{description}</Descricao>
-    <AddCarrinho to="/">Adicionar ao carrinho</AddCarrinho>
+    <Descricao>{lowerDescription(description)}</Descricao>
+    <AddCarrinho to="/" title="Clique aqui para adicionar ao carrinho">
+      Adicionar ao carrinho
+    </AddCarrinho>
   </Card>
 )
 

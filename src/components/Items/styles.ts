@@ -13,7 +13,7 @@ export const Card = styled.div`
 `
 
 export const Photo = styled.img`
-  // max-width: 304px;
+  max-width: 304px;
   max-height: 167px;
   height: 100%;
   width: 100%;

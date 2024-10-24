@@ -3,13 +3,22 @@ class MenuPerfil {
   title: string
   description: string
   id: number
-  categories: any
+  alt: string
 
-  constructor(image: string, title: string, description: string, id: number) {
+  // categories: any
+
+  constructor(
+    image: string,
+    title: string,
+    description: string,
+    id: number,
+    alt: string
+  ) {
     this.image = image
     this.title = title
     this.description = description
     this.id = id
+    this.alt = alt
   }
 }
 
