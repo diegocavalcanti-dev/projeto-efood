@@ -11,9 +11,17 @@ type Props = {
   categories: string[]
   description: string
   image: string
+  id: string
 }
 
-const Restaurant = ({ title, categories, description, image, rate }: Props) => {
+const Restaurant = ({
+  title,
+  categories,
+  description,
+  image,
+  rate,
+  id
+}: Props) => {
   return (
     <Card>
       <img src={image} alt={title} />
@@ -31,7 +39,7 @@ const Restaurant = ({ title, categories, description, image, rate }: Props) => {
       </div>
       <Descriçao>{lowerDescription(description)}</Descriçao>
       <div className="botao">
-        <Button type="button" to="/perfil" title="Saiba mais">
+        <Button type="button" to={'/perfil/'} title="Saiba mais">
           Saiba mais
         </Button>
       </div>

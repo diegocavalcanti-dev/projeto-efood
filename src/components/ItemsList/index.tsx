@@ -1,29 +1,99 @@
-// import { useState } from 'react'
+import { useState } from 'react'
+
 import MenuPerfil from '../../models/MenuPerfil'
 import Items from '../Items'
 
-import { Container, List } from './styles'
+import {
+  CloseIcon,
+  Container,
+  FoodDescription,
+  FoodImage,
+  FoodTitle,
+  List,
+  Modal,
+  ModalContainer,
+  ModalContent
+} from './styles'
 
 import pizza from '../../asset/images/pizza.svg' // arquivo testee
+import close from '../../asset/images/close-modal-icon.png' // arquivo testee
+import { AddCarrinho } from '../Items/styles'
 
 export type Props = {
-  nameOrder: string
   menusItems: MenuPerfil[]
 }
 
-// type Gal = {
-//   title: string
-//   menusItems: MenuPerfil[]
-// }
+const menusItems: MenuPerfil[] = [
+  {
+    id: 1,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  },
+  {
+    id: 2,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  },
+  {
+    id: 3,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  },
+  {
+    id: 4,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  },
+  {
+    id: 5,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  },
+  {
+    id: 6,
+    itemTitle: 'Pizza Marquerita',
+    itemDescription:
+      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
+    itemImage: pizza,
+    itemPhotoAlt: 'Pizza marguerita',
+    itemServe: 'de 2 a 3 pessoas',
+    itemPrice: 60.9
+  }
+]
 
-// const mock = [
-//   {
-
-//   }
-// ]
-
-const ItemsList = ({ nameOrder, menusItems }: Props) => {
-  // const agua = useState()
+const ItemsList = ({ menusItems }: Props) => {
+  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [modalItemTitle, setItemTitle] = useState('')
+  const [modalItemImage, setItemImage] = useState('')
+  const [modalItemDescription, setItemDescription] = useState('')
+  const [modalItemPhotoAlt, setItemPhotoAlt] = useState('')
+  const [modalItemServe, setItemServe] = useState('')
+  const [modalItemPrice, setItemPrice] = useState(0)
 
   return (
     <>
@@ -31,23 +101,67 @@ const ItemsList = ({ nameOrder, menusItems }: Props) => {
         {/* <div>{title}</div> */}
         <List>
           {menusItems.map((menu) => (
-            <li key={menu.id}>
+            <li
+              key={menu.id}
+              onClick={() => {
+                setModalEstaAberto(true)
+                setItemTitle(menu.itemTitle)
+                setItemImage(menu.itemImage)
+                setItemDescription(menu.itemDescription)
+                setItemPhotoAlt(menu.itemPhotoAlt)
+                setItemServe(menu.itemServe)
+                setItemPrice(menu.itemPrice)
+              }}
+            >
               <Items
                 key={menu.id}
-                image={menu.image}
-                title={menu.title}
-                description={menu.description}
-                photoAlt={menu.alt}
+                ItemImage={menu.itemImage}
+                ItemTitle={menu.itemTitle}
+                ItemDescription={menu.itemDescription}
+                ItemPhotoAlt={menu.itemPhotoAlt}
               />
             </li>
           ))}
         </List>
       </Container>
-      <div>
-        <img src={pizza} />
-      </div>
+      <Modal className={modalEstaAberto ? 'visivel' : ''}>
+        <ModalContent>
+          <FoodImage src={modalItemImage} alt={modalItemPhotoAlt} />
+          <ModalContainer>
+            <FoodTitle>{modalItemTitle}</FoodTitle>
+            <FoodDescription>{modalItemDescription}</FoodDescription>
+            <FoodDescription>{modalItemServe}</FoodDescription>
+            <AddCarrinho to={''}>
+              Adicionar ao carrinho - R$ {modalItemPrice}
+            </AddCarrinho>
+          </ModalContainer>
+          <CloseIcon
+            src={close}
+            alt=""
+            onClick={() => setModalEstaAberto(false)}
+          />
+        </ModalContent>
+        <div
+          onClick={() => setModalEstaAberto(false)}
+          className="overlay"
+        ></div>
+      </Modal>
     </>
   )
 }
 
 export default ItemsList
+
+//   <li
+//   key={menu.id}
+//   onClick={() => {
+//     setShowModal(true)
+//     setfoodTitle(menu.nome)
+//     setfoodDescription(menu.descricao)
+//     setfoodServe(menu.porcao)
+//     setfoodPrice(menu.preco)
+//     setfoodPhotoAlt(menu.nome)
+//     setfoodPhoto(menu.foto)
+//     setFoodId(menu.id)
+//   }}
+// >

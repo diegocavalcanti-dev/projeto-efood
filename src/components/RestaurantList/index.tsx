@@ -18,6 +18,7 @@ const RestaurantList = ({ background, title, menus }: Props) => {
         {menus.map((menu) => (
           <Restaurant
             key={menu.id}
+            id={menu.id.toString()}
             categories={menu.categories}
             description={menu.description}
             image={menu.image}

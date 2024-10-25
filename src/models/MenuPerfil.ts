@@ -1,24 +1,30 @@
 class MenuPerfil {
-  image: string
-  title: string
-  description: string
   id: number
-  alt: string
+  itemTitle: string
+  itemImage: string
+  itemDescription: string
+  itemPhotoAlt: string
+  itemServe: string
+  itemPrice: number
 
   // categories: any
 
   constructor(
-    image: string,
-    title: string,
-    description: string,
     id: number,
-    alt: string
+    itemTitle: string,
+    itemImage: string,
+    itemDescription: string,
+    itemPhotoAlt: string,
+    itemServe: string,
+    itemPrice: number
   ) {
-    this.image = image
-    this.title = title
-    this.description = description
+    this.itemImage = itemImage
+    this.itemTitle = itemTitle
+    this.itemDescription = itemDescription
+    this.itemPhotoAlt = itemPhotoAlt
     this.id = id
-    this.alt = alt
+    this.itemServe = itemServe
+    this.itemPrice = itemPrice
   }
 }
 
