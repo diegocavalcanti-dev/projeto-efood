@@ -4,8 +4,10 @@ import Items from '../Items'
 
 import { Container, List } from './styles'
 
+import pizza from '../../asset/images/pizza.svg' // arquivo testee
+
 export type Props = {
-  title: string
+  nameOrder: string
   menusItems: MenuPerfil[]
 }
 
@@ -20,37 +22,31 @@ export type Props = {
 //   }
 // ]
 
-const ItemsList = ({ title, menusItems }: Props) => {
+const ItemsList = ({ nameOrder, menusItems }: Props) => {
   // const agua = useState()
 
   return (
-    <Container title="Promoções">
-      {/* <div>{title}</div> */}
-      <List>
-        {menusItems.map((menu) => (
-          //   <li
-          //   key={food.id}
-          //   onClick={() => {
-          //     setShowModal(true)
-          //     setfoodTitle(menu.nome)
-          //     setfoodDescription(menu.descricao)
-          //     setfoodServe(menu.porcao)
-          //     setfoodPrice(menu.preco)
-          //     setfoodPhotoAlt(menu.nome)
-          //     setfoodPhoto(menu.foto)
-          //     setFoodId(menu.id)
-          //   }}
-          // >
-          <Items
-            key={menu.id}
-            image={menu.image}
-            title={menu.title}
-            description={menu.description}
-            photoAlt={menu.alt}
-          />
-        ))}
-      </List>
-    </Container>
+    <>
+      <Container>
+        {/* <div>{title}</div> */}
+        <List>
+          {menusItems.map((menu) => (
+            <li key={menu.id}>
+              <Items
+                key={menu.id}
+                image={menu.image}
+                title={menu.title}
+                description={menu.description}
+                photoAlt={menu.alt}
+              />
+            </li>
+          ))}
+        </List>
+      </Container>
+      <div>
+        <img src={pizza} />
+      </div>
+    </>
   )
 }
 

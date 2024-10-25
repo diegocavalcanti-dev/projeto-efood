@@ -67,7 +67,7 @@ const Perfil = () => (
   <>
     <Header />
     <Banner />
-    <ItemsList menusItems={cardapioPerfil} title="Promoções" />
+    <ItemsList menusItems={cardapioPerfil} nameOrder="Promoções" />
     <Footer />
   </>
 )

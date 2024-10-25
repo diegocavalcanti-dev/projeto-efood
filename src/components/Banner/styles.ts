@@ -6,7 +6,8 @@ export const Imagem = styled.div`
   height: 280px;
   background-repeat: no-repeat;
   background-size: cover;
-  bottom: 100px;
+  padding-top: 26px;
+  object-fit: cover;
 
   .container {
     max-width: 1024px;
@@ -18,7 +19,6 @@ export const Imagem = styled.div`
 
 export const Categoria = styled.p`
   font-size: 32px;
-  padding-top: 26px;
   color: ${cores.branca};
   font-weight: 100;
   line-height: 38px;
@@ -27,6 +27,6 @@ export const Categoria = styled.p`
 export const Titulo = styled.p`
   font-size: 32px;
   color: ${cores.branca};
-  padding-top: 156px;
+  margin-top: 156px;
   font-weight: bold;
 `

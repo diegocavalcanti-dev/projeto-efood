@@ -31,7 +31,7 @@ const Restaurant = ({ title, categories, description, image, rate }: Props) => {
       </div>
       <Descriçao>{lowerDescription(description)}</Descriçao>
       <div className="botao">
-        <Button type="link" to="/perfil" title="Saiba mais">
+        <Button type="button" to="/perfil" title="Saiba mais">
           Saiba mais
         </Button>
       </div>

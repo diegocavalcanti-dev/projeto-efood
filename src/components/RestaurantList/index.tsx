@@ -10,7 +10,7 @@ type Props = {
 }
 
 const RestaurantList = ({ background, title, menus }: Props) => {
-  // const precisaSerCriado = aaaa()
+  // linha de teste const precisaSerCriado = aaaa()
 
   return (
     <Container>

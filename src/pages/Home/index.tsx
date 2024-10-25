@@ -6,7 +6,7 @@ import camarao from '../../asset/images/camarao.svg'
 import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
 
-const cardapio: MenuHome[] = [
+const cardapioHome: MenuHome[] = [
   {
     id: 1,
     categories: ['Destaque da semana', 'Japonesa'],
@@ -66,7 +66,7 @@ const cardapio: MenuHome[] = [
 const Home = () => (
   <>
     <Hero />
-    <RestaurantList menus={cardapio} title="Promoções" background="gray" />
+    <RestaurantList menus={cardapioHome} title="Promoções" background="gray" />
     <Footer />
   </>
 )

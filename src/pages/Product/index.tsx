@@ -73,7 +73,7 @@ const Product = () => {
       <Header />
       <Banner />
       <div>Produto {id}</div>
-      <ItemsList menusItems={cardapioPerfil} title="Promoções" />
+      <ItemsList menusItems={cardapioPerfil} nameOrder="Promoções" />
       <Footer />
     </>
   )
