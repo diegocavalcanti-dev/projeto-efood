@@ -1,9 +1,6 @@
 import { useState } from 'react'
 
-import MenuPerfil from '../../models/MenuPerfil'
 import Items from '../Items'
-
-import { foodSelected } from '../../pages/Perfil' //PODERÁ SER ALTERADO
 
 import {
   CloseIcon,
@@ -17,7 +14,6 @@ import {
   ModalContent
 } from './styles'
 
-import pizza from '../../asset/images/pizza.svg' // arquivo testee
 import fechar from '../../asset/images/close-modal-icon.png' // arquivo testee
 import { AddCarrinho } from '../Items/styles'
 import { Cardapio } from '../../pages/Home'
@@ -25,69 +21,6 @@ import { Cardapio } from '../../pages/Home'
 export type Props = {
   restaurante: Cardapio[]
 }
-
-const menusItems: MenuPerfil[] = [
-  {
-    id: 1,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  },
-  {
-    id: 2,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  },
-  {
-    id: 3,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  },
-  {
-    id: 4,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  },
-  {
-    id: 5,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  },
-  {
-    id: 6,
-    itemTitle: 'Pizza Marquerita',
-    itemDescription:
-      'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza marguerita',
-    itemServe: 'de 2 a 3 pessoas',
-    itemPrice: 60.9
-  }
-]
 
 const ItemsList = ({ restaurante }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
@@ -100,7 +33,6 @@ const ItemsList = ({ restaurante }: Props) => {
   return (
     <>
       <Container>
-        {/* <div>{title}</div> */}
         <List>
           {restaurante.map((menu) => (
             <li
@@ -127,18 +59,13 @@ const ItemsList = ({ restaurante }: Props) => {
       </Container>
       <Modal className={modalEstaAberto ? 'visivel' : ''}>
         <ModalContent>
-          <FoodImage
-            src={foodSelected.itemImageSelected}
-            alt={foodSelected.itemPhotoAltSelected}
-          />
+          <FoodImage src={modalItemImage} />
           <ModalContainer>
-            <FoodTitle>{foodSelected.itemTitleSelected}</FoodTitle>
-            <FoodDescription>
-              {foodSelected.itemDescriptionSelected}
-            </FoodDescription>
-            <FoodDescription>{foodSelected.itemServeSelected}</FoodDescription>
+            <FoodTitle>{modalItemTitle}</FoodTitle>
+            <FoodDescription>{modalItemDescription}</FoodDescription>
+            <FoodDescription>{modalItemServe}</FoodDescription>
             <AddCarrinho to={''}>
-              Adicionar ao carrinho - R$ {foodSelected.itemPriceSelected}
+              Adicionar ao carrinho - R$ {modalItemPrice}
             </AddCarrinho>
           </ModalContainer>
           <CloseIcon

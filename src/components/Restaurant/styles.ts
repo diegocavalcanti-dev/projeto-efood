@@ -7,6 +7,14 @@ export const Card = styled.div`
   position: relative;
   border: solid 1px ${cores.laranja};
 
+  img {
+    max-width: 472px;
+    width: 472px;
+    object-fit: cover;
+    max-height: 217px;
+    height: 217px;
+  }
+
   .botao {
     padding: 0 0 10px 8px;
   }

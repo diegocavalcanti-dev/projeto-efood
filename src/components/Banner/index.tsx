@@ -1,17 +1,17 @@
 import { Categoria, Imagem, Titulo } from './styles'
 
-import bannerImg from '../../asset/images/italiana_banner.svg'
+type Props = {
+  categoria: string // Para a categoria
+  titulo: string // Para o título
+  bannerImgUrl: string // Para a imagem do banner
+}
 
-// export type Props = {
-//   restaurant: Restaurant
-// }
-
-const Banner = () => (
-  <Imagem style={{ backgroundImage: `url(${bannerImg})` }}>
+const Banner = ({ categoria, titulo, bannerImgUrl }: Props) => (
+  <Imagem style={{ backgroundImage: `url(${bannerImgUrl})` }}>
     <div className="container">
       <div>
-        <Categoria>Italiana</Categoria>
-        <Titulo>La Dolce Vita Trattoria</Titulo>
+        <Categoria>{categoria}</Categoria>
+        <Titulo>{titulo}</Titulo>
       </div>
     </div>
   </Imagem>

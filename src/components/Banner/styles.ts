@@ -7,13 +7,24 @@ export const Imagem = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 26px;
-  object-fit: cover;
+  position: relative;
 
   .container {
     max-width: 1024px;
     position: relative;
     margin: 0 auto;
     display: block;
+    z-index: 1;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
   }
 `
 
