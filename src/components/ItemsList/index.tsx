@@ -3,7 +3,7 @@ import { useState } from 'react'
 import MenuPerfil from '../../models/MenuPerfil'
 import Items from '../Items'
 
-import { foodSelected } from '../../pages/Perfil'
+import { foodSelected } from '../../pages/Perfil' //PODERÁ SER ALTERADO
 
 import {
   CloseIcon,
@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 import pizza from '../../asset/images/pizza.svg' // arquivo testee
-import close from '../../asset/images/close-modal-icon.png' // arquivo testee
+import fechar from '../../asset/images/close-modal-icon.png' // arquivo testee
 import { AddCarrinho } from '../Items/styles'
 
 export type Props = {
@@ -129,19 +129,21 @@ const ItemsList = ({ menusItems }: Props) => {
       <Modal className={modalEstaAberto ? 'visivel' : ''}>
         <ModalContent>
           <FoodImage
-            src={foodSelected.itemImage}
-            alt={foodSelected.itemPhotoAlt}
+            src={foodSelected.itemImageSelected}
+            alt={foodSelected.itemPhotoAltSelected}
           />
           <ModalContainer>
-            <FoodTitle>{foodSelected.itemTitle}</FoodTitle>
-            <FoodDescription>{foodSelected.itemDescription}</FoodDescription>
-            <FoodDescription>{foodSelected.itemServe}</FoodDescription>
+            <FoodTitle>{foodSelected.itemTitleSelected}</FoodTitle>
+            <FoodDescription>
+              {foodSelected.itemDescriptionSelected}
+            </FoodDescription>
+            <FoodDescription>{foodSelected.itemServeSelected}</FoodDescription>
             <AddCarrinho to={''}>
-              Adicionar ao carrinho - R$ {foodSelected.itemPrice}
+              Adicionar ao carrinho - R$ {foodSelected.itemPriceSelected}
             </AddCarrinho>
           </ModalContainer>
           <CloseIcon
-            src={close}
+            src={fechar}
             alt=""
             onClick={() => setModalEstaAberto(false)}
           />
@@ -156,17 +158,3 @@ const ItemsList = ({ menusItems }: Props) => {
 }
 
 export default ItemsList
-
-//   <li
-//   key={menu.id}
-//   onClick={() => {
-//     setShowModal(true)
-//     setfoodTitle(menu.nome)
-//     setfoodDescription(menu.descricao)
-//     setfoodServe(menu.porcao)
-//     setfoodPrice(menu.preco)
-//     setfoodPhotoAlt(menu.nome)
-//     setfoodPhoto(menu.foto)
-//     setFoodId(menu.id)
-//   }}
-// >

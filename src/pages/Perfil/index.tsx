@@ -79,13 +79,13 @@ const cardapioPerfil: MenuPerfil[] = [
 
 export const foodSelected = {
   id: 1,
-  itemTitle: 'Pizza Marquerita',
-  itemDescription:
+  itemTitleSelected: 'Pizza Marguerita',
+  itemDescriptionSelected:
     'A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabores inigualável. Ela é fit com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião.',
-  itemImage: pizza,
-  itemPhotoAlt: 'Imagem Pizza marguerita',
-  itemServe: 'de 2 a 3 pessoas',
-  itemPrice: 60.9
+  itemImageSelected: pizza,
+  itemPhotoAltSelected: 'Imagem Pizza marguerita',
+  itemServeSelected: 'de 2 a 3 pessoas',
+  itemPriceSelected: 60.9
 }
 
 const Perfil = () => {
