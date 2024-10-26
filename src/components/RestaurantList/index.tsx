@@ -1,27 +1,28 @@
-import MenuHome from '../../models/MenuHome'
+// import MenuHome from '../../models/MenuHome'
+import { Restaurante } from '../../pages/Home'
 import Restaurant from '../Restaurant'
 
 import { Container, List } from './styles'
 
 type Props = {
-  menus: MenuHome[]
+  restaurantes: Restaurante[]
 }
 
-const RestaurantList = ({ menus }: Props) => {
+const RestaurantList = ({ restaurantes }: Props) => {
   // linha de teste const precisaSerCriado = aaaa()
 
   return (
     <Container>
       <List>
-        {menus.map((menu) => (
+        {restaurantes.map((menu) => (
           <Restaurant
             key={menu.id}
             id={menu.id.toString()}
-            RestaurantCategories={menu.categories}
-            RestaurantDescription={menu.description}
-            RestaurantImage={menu.image}
-            RestaurantTitle={menu.title}
-            RestaurantRate={menu.rate}
+            RestaurantCategories={[menu.tipo]}
+            RestaurantDescription={menu.descricao}
+            RestaurantImage={menu.capa}
+            RestaurantTitle={menu.titulo}
+            RestaurantRate={Number(menu.avaliacao)}
           />
         ))}
       </List>

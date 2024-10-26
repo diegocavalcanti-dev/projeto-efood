@@ -7,75 +7,77 @@ import pizza from '../../asset/images/pizza.svg'
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
+import { useEffect, useState } from 'react'
+import { Restaurante } from '../Home'
 
-const cardapioPerfil: MenuPerfil[] = [
-  {
-    id: 1,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  },
-  {
-    id: 2,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  },
-  {
-    id: 3,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  },
-  {
-    id: 4,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  },
-  {
-    id: 5,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  },
-  {
-    id: 6,
-    // categories: ['Destaque da semana', 'Japonesa'],
-    itemDescription:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    itemTitle: 'Pizza Marguerita',
-    itemImage: pizza,
-    itemPhotoAlt: 'Pizza',
-    itemServe: '',
-    itemPrice: 0
-  }
-]
+// const cardapioPerfil: MenuPerfil[] = [
+//   {
+//     id: 1,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   },
+//   {
+//     id: 2,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   },
+//   {
+//     id: 3,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   },
+//   {
+//     id: 4,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   },
+//   {
+//     id: 5,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   },
+//   {
+//     id: 6,
+//     // categories: ['Destaque da semana', 'Japonesa'],
+//     itemDescription:
+//       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+//     itemTitle: 'Pizza Marguerita',
+//     itemImage: pizza,
+//     itemPhotoAlt: 'Pizza',
+//     itemServe: '',
+//     itemPrice: 0
+//   }
+// ]
 
 export const foodSelected = {
   id: 1,
@@ -91,12 +93,28 @@ export const foodSelected = {
 const Perfil = () => {
   const { id } = useParams()
 
+  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        // Verifica se a resposta é uma array, se não, converte para uma array com um único elemento
+        if (!Array.isArray(res)) {
+          res = [res]
+        }
+        setRestaurante(res[0]) // Define o primeiro restaurante retornado pela API
+      })
+  }, [id])
+  if (!restaurante) {
+    return <h3>Carregando...</h3>
+  }
+
   return (
     <>
       <Header />
       <Banner />
       <div>Produto {id}</div>
-      <ItemsList menusItems={cardapioPerfil} />
+      <ItemsList restaurante={restaurante.cardapio} />
       <Footer />
     </>
   )
