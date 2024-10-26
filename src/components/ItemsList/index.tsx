@@ -3,6 +3,8 @@ import { useState } from 'react'
 import MenuPerfil from '../../models/MenuPerfil'
 import Items from '../Items'
 
+import { foodSelected } from '../../pages/Perfil'
+
 import {
   CloseIcon,
   Container,
@@ -126,13 +128,16 @@ const ItemsList = ({ menusItems }: Props) => {
       </Container>
       <Modal className={modalEstaAberto ? 'visivel' : ''}>
         <ModalContent>
-          <FoodImage src={modalItemImage} alt={modalItemPhotoAlt} />
+          <FoodImage
+            src={foodSelected.itemImage}
+            alt={foodSelected.itemPhotoAlt}
+          />
           <ModalContainer>
-            <FoodTitle>{modalItemTitle}</FoodTitle>
-            <FoodDescription>{modalItemDescription}</FoodDescription>
-            <FoodDescription>{modalItemServe}</FoodDescription>
+            <FoodTitle>{foodSelected.itemTitle}</FoodTitle>
+            <FoodDescription>{foodSelected.itemDescription}</FoodDescription>
+            <FoodDescription>{foodSelected.itemServe}</FoodDescription>
             <AddCarrinho to={''}>
-              Adicionar ao carrinho - R$ {modalItemPrice}
+              Adicionar ao carrinho - R$ {foodSelected.itemPrice}
             </AddCarrinho>
           </ModalContainer>
           <CloseIcon

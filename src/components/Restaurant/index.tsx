@@ -39,7 +39,7 @@ const Restaurant = ({
       </div>
       <Descriçao>{lowerDescription(description)}</Descriçao>
       <div className="botao">
-        <Button type="button" to={'/perfil/'} title="Saiba mais">
+        <Button type="button" to={`/perfil/${id}`} title="Saiba mais">
           Saiba mais
         </Button>
       </div>

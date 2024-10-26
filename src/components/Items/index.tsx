@@ -24,10 +24,7 @@ const Items = ({
     <Photo src={ItemImage} alt={ItemPhotoAlt} />
     <Titulo>{ItemTitle}</Titulo>
     <Descricao>{lowerDescription(ItemDescription)}</Descricao>
-    <AddCarrinho
-      to={'/product/2'}
-      title="Clique aqui para adicionar ao carrinho"
-    >
+    <AddCarrinho to={''} title="Clique aqui para adicionar ao carrinho">
       Adicionar ao carrinho
     </AddCarrinho>
   </Card>
