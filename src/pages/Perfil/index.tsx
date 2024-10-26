@@ -34,7 +34,6 @@ const Perfil = () => {
         titulo={restaurante.titulo}
         bannerImgUrl={restaurante.capa}
       />
-      <div>Produto {id}</div>
       <ItemsList restaurante={restaurante.cardapio} />
       <Footer />
     </>

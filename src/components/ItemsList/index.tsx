@@ -1,7 +1,5 @@
 import { useState } from 'react'
-
 import Items from '../Items'
-
 import {
   CloseIcon,
   Container,
@@ -13,13 +11,19 @@ import {
   ModalContainer,
   ModalContent
 } from './styles'
-
-import fechar from '../../asset/images/close-modal-icon.png' // arquivo testee
+import fechar from '../../asset/images/close-modal-icon.png' // arquivo teste
 import { AddCarrinho } from '../Items/styles'
 import { Cardapio } from '../../pages/Home'
 
 export type Props = {
   restaurante: Cardapio[]
+}
+
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const ItemsList = ({ restaurante }: Props) => {
@@ -65,7 +69,7 @@ const ItemsList = ({ restaurante }: Props) => {
             <FoodDescription>{modalItemDescription}</FoodDescription>
             <FoodDescription>{modalItemServe}</FoodDescription>
             <AddCarrinho to={''}>
-              Adicionar ao carrinho - R$ {modalItemPrice}
+              Adicionar ao carrinho - {formataPreco(modalItemPrice)}{' '}
             </AddCarrinho>
           </ModalContainer>
           <CloseIcon
