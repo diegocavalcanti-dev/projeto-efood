@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import RestaurantList from '../../components/RestaurantList'
 import MenuHome from '../../models/MenuHome'
 
@@ -64,37 +63,11 @@ const cardapioHome: MenuHome[] = [
   }
 ]
 
-// export type RestaurantBackEnd = {
-//   id: number
-//   titulo: string
-//   destacado: string
-//   tipo: string[]
-//   avaliacao: number
-//   descricao: string
-//   capa: string
-//   cardapio: [
-//     {
-//       foto: string
-//       preco: number
-//       id: number
-//       nome: string
-//       descricao: string
-//       porcao: string
-//     }
-//   ]
-// }
-
 const Home = () => {
-  // const [cardapioHome, setCardapioHome] = useState([])
-
   return (
     <>
       <Hero />
-      <RestaurantList
-        menus={cardapioHome}
-        title="Promoções"
-        background="gray"
-      />
+      <RestaurantList menus={cardapioHome} />
       <Footer />
     </>
   )

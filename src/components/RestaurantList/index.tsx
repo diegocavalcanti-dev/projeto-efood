@@ -4,12 +4,10 @@ import Restaurant from '../Restaurant'
 import { Container, List } from './styles'
 
 type Props = {
-  title: string //Precisa ser alterado
-  background: 'gray' | 'black' //Precisa ser alterado
   menus: MenuHome[]
 }
 
-const RestaurantList = ({ background, title, menus }: Props) => {
+const RestaurantList = ({ menus }: Props) => {
   // linha de teste const precisaSerCriado = aaaa()
 
   return (
@@ -19,11 +17,11 @@ const RestaurantList = ({ background, title, menus }: Props) => {
           <Restaurant
             key={menu.id}
             id={menu.id.toString()}
-            categories={menu.categories}
-            description={menu.description}
-            image={menu.image}
-            title={menu.title}
-            rate={menu.rate}
+            RestaurantCategories={menu.categories}
+            RestaurantDescription={menu.description}
+            RestaurantImage={menu.image}
+            RestaurantTitle={menu.title}
+            RestaurantRate={menu.rate}
           />
         ))}
       </List>

@@ -6,38 +6,38 @@ import { Card, Titulo, Descriçao, Categories, Review } from './styles'
 import { lowerDescription } from '../Items'
 
 type Props = {
-  title: string
-  rate: number
-  categories: string[]
-  description: string
-  image: string
+  RestaurantTitle: string
+  RestaurantRate: number
+  RestaurantCategories: string[]
+  RestaurantDescription: string
+  RestaurantImage: string
   id: string
 }
 
 const Restaurant = ({
-  title,
-  categories,
-  description,
-  image,
-  rate,
+  RestaurantTitle,
+  RestaurantCategories,
+  RestaurantDescription,
+  RestaurantImage,
+  RestaurantRate,
   id
 }: Props) => {
   return (
     <Card>
-      <img src={image} alt={title} />
+      <img src={RestaurantImage} alt={RestaurantTitle} />
       <Categories>
-        {categories.map((info) => (
+        {RestaurantCategories.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
       </Categories>
       <div className="ContainerTop">
-        <Titulo>{title}</Titulo>
+        <Titulo>{RestaurantTitle}</Titulo>
         <Review>
-          <h2>{rate}</h2>
+          <h2>{RestaurantRate}</h2>
           <img src={estrela} alt="Estrela de Avaliação" />
         </Review>
       </div>
-      <Descriçao>{lowerDescription(description)}</Descriçao>
+      <Descriçao>{lowerDescription(RestaurantDescription)}</Descriçao>
       <div className="botao">
         <Button type="button" to={`/perfil/${id}`} title="Saiba mais">
           Saiba mais
