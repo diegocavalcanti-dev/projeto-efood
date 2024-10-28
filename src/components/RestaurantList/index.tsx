@@ -18,7 +18,10 @@ const RestaurantList = ({ restaurantes }: Props) => {
           <Restaurant
             key={menu.id}
             id={menu.id.toString()}
-            RestaurantCategories={[menu.tipo]}
+            RestaurantCategories={[
+              menu.tipo,
+              menu.destacado ? 'Destaque da semana' : ''
+            ]}
             RestaurantDescription={menu.descricao}
             RestaurantImage={menu.capa}
             RestaurantTitle={menu.titulo}

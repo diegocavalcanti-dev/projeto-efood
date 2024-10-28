@@ -26,9 +26,11 @@ const Restaurant = ({
     <Card>
       <img src={RestaurantImage} alt={RestaurantTitle} />
       <Categories>
-        {RestaurantCategories.map((info) => (
-          <Tag key={info}>{info}</Tag>
-        ))}
+        {RestaurantCategories.map((info) => {
+          if (info) {
+            return <Tag key={info}>{info}</Tag>
+          }
+        })}
       </Categories>
       <div className="ContainerTop">
         <Titulo>{RestaurantTitle}</Titulo>
