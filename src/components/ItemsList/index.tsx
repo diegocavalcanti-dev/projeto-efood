@@ -11,12 +11,21 @@ import {
   ModalContainer,
   ModalContent
 } from './styles'
-import fechar from '../../asset/images/close-modal-icon.png' // arquivo teste
+import fechar from '../../asset/images/close-modal-icon.png'
 import { AddCarrinho } from '../Items/styles'
-import { Cardapio } from '../../pages/Home'
+
+// Definindo o tipo correto para os itens de cardápio
+export type CardapioItem = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
 
 export type Props = {
-  restaurante: Cardapio[]
+  restaurante: CardapioItem[]
 }
 
 export const formataPreco = (preco = 0) => {

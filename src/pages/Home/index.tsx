@@ -4,15 +4,6 @@ import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
 import { useEffect, useState } from 'react'
 
-export type Cardapio = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
 export type Restaurante = {
   bannerImgUrl: string
   nome: string
@@ -24,7 +15,16 @@ export type Restaurante = {
   avaliacao: number
   descricao: string
   capa: string
-  cardapio: Cardapio[]
+  cardapio: [
+    {
+      foto: string
+      preco: number
+      id: number
+      nome: string
+      descricao: string
+      porcao: string
+    }
+  ]
 }
 
 const Home = () => {
