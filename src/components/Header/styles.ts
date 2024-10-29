@@ -32,7 +32,7 @@ export const HeaderLogo = styled.img`
   width: 100%;
 `
 
-export const HeaderCart = styled.a`
+export const CartButton = styled.a`
   color: ${cores.laranja};
   text-decoration: none;
   font-weight: bold;

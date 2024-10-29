@@ -9,6 +9,7 @@ import Footer from '../../components/Footer'
 // import { Restaurante } from '../Home'
 
 import { useGetRestauranteSelectedQuery } from '../../services/api'
+import Cart from '../../components/Cart'
 
 const Perfil = () => {
   const { id } = useParams()
@@ -26,6 +27,7 @@ const Perfil = () => {
         />
         <ItemsList restaurante={restaurante.cardapio} />
         <Footer />
+        <Cart />
       </>
     )
   }
