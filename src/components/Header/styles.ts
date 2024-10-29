@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 import heroBackground from '../../asset/images/fundo.png'
 
@@ -17,6 +17,10 @@ export const HeaderBar = styled.header`
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      padding: 39px 10px;
+    }
   }
 `
 

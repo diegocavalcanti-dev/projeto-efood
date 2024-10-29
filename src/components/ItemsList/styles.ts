@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { AddCarrinho } from '../Items/styles'
 
 export const Container = styled.section`
@@ -10,12 +10,29 @@ export const Container = styled.section`
   li {
     list-style: none;
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin: 20px 10px;
+  }
 `
 
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: auto;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    margin: 0 10px;
+    row-gap: 10px;
+    margin: auto;
+  }
 `
 
 export const Modal = styled.div`
@@ -59,6 +76,10 @@ export const ModalContent = styled.div`
 
   ${AddCarrinho} {
     margin: 0;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
   }
 `
 export const FoodImage = styled.img`

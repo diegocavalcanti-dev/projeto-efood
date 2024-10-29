@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -15,6 +15,10 @@ export const Imagem = styled.div`
     margin: 0 auto;
     display: block;
     z-index: 1;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 90%;
+    }
   }
 
   &::after {

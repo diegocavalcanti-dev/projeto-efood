@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
@@ -18,6 +18,10 @@ export const Photo = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    object-fit: cover;
+  }
 `
 
 export const Titulo = styled.h3`
