@@ -1,20 +1,16 @@
 import { useParams } from 'react-router-dom'
 
-import ItemsList from '../../components/ItemsList'
-
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
-// import { useEffect, useState } from 'react'
-// import { Restaurante } from '../Home'
+import ItemsList from '../../components/ItemsList'
+import Cart from '../../components/Cart'
 
 import { useGetRestauranteSelectedQuery } from '../../services/api'
-import Cart from '../../components/Cart'
 
 const Perfil = () => {
   const { id } = useParams()
-
-  const { data: restaurante, isLoading } = useGetRestauranteSelectedQuery(id!)
+  const { data: restaurante } = useGetRestauranteSelectedQuery(id!)
 
   if (restaurante) {
     return (
@@ -25,7 +21,15 @@ const Perfil = () => {
           titulo={restaurante.titulo}
           bannerImgUrl={restaurante.capa}
         />
-        <ItemsList restaurante={restaurante.cardapio} />
+        <ItemsList
+          restaurante={restaurante}
+          pedido={{
+            id: 0,
+            nome: '',
+            foto: '',
+            preco: 0
+          }}
+        />
         <Footer />
         <Cart />
       </>

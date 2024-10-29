@@ -90,3 +90,15 @@ export const FoodDescription = styled.p`
   line-height: 22px;
   margin-bottom: 16px;
 `
+
+export const AddToCartButton = styled.button`
+  background-color: ${cores.cremeEscuro};
+  color: ${cores.laranja};
+  border: none;
+  cursor: pointer;
+  padding: 4px 7px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+`

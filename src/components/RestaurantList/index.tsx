@@ -1,4 +1,3 @@
-// import MenuHome from '../../models/MenuHome'
 import { Restaurante } from '../../pages/Home'
 import Restaurant from '../Restaurant'
 
@@ -9,8 +8,7 @@ type Props = {
 }
 
 const RestaurantList = ({ restaurantes }: Props) => {
-  // linha de teste const precisaSerCriado = aaaa()
-
+  // linha de teste()
   return (
     <Container>
       <List>

@@ -1,10 +1,14 @@
 import RestaurantList from '../../components/RestaurantList'
-
 import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
-// import { useEffect, useState } from 'react'
-
 import { useGetRestaurantesQuery } from '../../services/api'
+
+export type Pedido = {
+  id: number
+  nome: string
+  foto: string
+  preco: number
+}
 
 export type Restaurante = {
   bannerImgUrl: string
@@ -30,7 +34,7 @@ export type Restaurante = {
 }
 
 const Home = () => {
-  const { data: restaurantes, isLoading } = useGetRestaurantesQuery()
+  const { data: restaurantes } = useGetRestaurantesQuery()
 
   if (!restaurantes) {
     return <h3>Carregando...</h3>

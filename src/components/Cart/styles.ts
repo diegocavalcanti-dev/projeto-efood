@@ -32,10 +32,11 @@ export const Sidebar = styled.aside`
   flex-direction: column;
   background-color: ${cores.laranja};
   z-index: 1;
-  padding: 32px 8px 0 8px;
+  padding: 32px 8px;
   max-width: 360px;
   width: 100%;
   position: relative;
+  overflow-y: scroll;
 `
 
 export const AddButton = styled.button`
@@ -66,6 +67,7 @@ export const CartItem = styled.li`
 
   button {
     width: 16px;
+    cursor: pointer;
     height: 16px;
     position: absolute;
     bottom: 8px;
