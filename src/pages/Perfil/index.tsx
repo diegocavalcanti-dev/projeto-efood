@@ -5,41 +5,31 @@ import ItemsList from '../../components/ItemsList'
 import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
-import { useEffect, useState } from 'react'
-import { Restaurante } from '../Home'
+// import { useEffect, useState } from 'react'
+// import { Restaurante } from '../Home'
+
+import { useGetRestauranteSelectedQuery } from '../../services/api'
 
 const Perfil = () => {
   const { id } = useParams()
 
-  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        if (!Array.isArray(res)) {
-          res = [res]
-        }
-        setRestaurante(res[0])
-      })
-  }, [id])
-  if (!restaurante) {
-    return <h3>Carregando...</h3>
-  }
+  const { data: restaurante, isLoading } = useGetRestauranteSelectedQuery(id!)
 
-  return (
-    <>
-      <Header />
-      <Banner
-        categoria={restaurante.tipo}
-        titulo={restaurante.titulo}
-        bannerImgUrl={restaurante.capa}
-      />
-      <ItemsList restaurante={restaurante.cardapio} />
-      <Footer />
-    </>
-  )
+  if (restaurante) {
+    return (
+      <>
+        <Header />
+        <Banner
+          categoria={restaurante.tipo}
+          titulo={restaurante.titulo}
+          bannerImgUrl={restaurante.capa}
+        />
+        <ItemsList restaurante={restaurante.cardapio} />
+        <Footer />
+      </>
+    )
+  }
+  return <h3>Carregando...</h3>
 }
 
 export default Perfil
-
-// titulo, bannerImgUrl

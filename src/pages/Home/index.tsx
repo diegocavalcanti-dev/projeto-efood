@@ -2,7 +2,9 @@ import RestaurantList from '../../components/RestaurantList'
 
 import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
+
+import { useGetRestaurantesQuery } from '../../services/api'
 
 export type Restaurante = {
   bannerImgUrl: string
@@ -28,14 +30,11 @@ export type Restaurante = {
 }
 
 const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([])
+  const { data: restaurantes, isLoading } = useGetRestaurantesQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
-
+  if (!restaurantes) {
+    return <h3>Carregando...</h3>
+  }
   return (
     <>
       <Hero />
