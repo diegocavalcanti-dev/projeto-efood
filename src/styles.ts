@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {

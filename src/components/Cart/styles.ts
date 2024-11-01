@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import trush from '../../asset/images/trush.png'
+import bin from '../../asset/images/bin.png'
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -50,6 +50,7 @@ export const AddButton = styled.button`
   font-size: 14px;
   display: block;
   width: 100%;
+  cursor: pointer;
 `
 
 export const CartItem = styled.li`
@@ -72,7 +73,7 @@ export const CartItem = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
-    background-image: url(${trush});
+    background-image: url(${bin});
     background-color: transparent;
     border: none;
   }
@@ -101,4 +102,11 @@ export const InfosCart = styled.div`
   color: ${cores.cremeClaro};
   weight: 700;
   font-size: 14px;
+`
+
+export const CartStage = styled.div`
+  display: block;
+  &.is-checkout {
+    display: none;
+  }
 `
