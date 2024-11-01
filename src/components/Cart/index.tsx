@@ -15,7 +15,6 @@ import {
 
 const Cart = () => {
   const { isOpen, pedido } = useSelector((state: RootReducer) => state.cart)
-
   const dispatch = useDispatch()
 
   const closeCart = () => {
