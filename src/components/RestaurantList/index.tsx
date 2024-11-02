@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Restaurante } from '../../pages/Home'
 import Loader from '../Loader'
 import Restaurant from '../Restaurant'
 

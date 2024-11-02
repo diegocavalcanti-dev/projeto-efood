@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
+import InputMask from 'react-input-mask'
 
 import { RootReducer } from '../../store'
 import { parseToBrl } from '../../utils'
@@ -23,7 +24,7 @@ type Props = {
 const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
   const [purchase, { isSuccess, data }] = usePurchaseMutation()
 
-  const { isPayment, isConfirmed } = useSelector(
+  const { isPayment, isConfirmed, pedido } = useSelector(
     (state: RootReducer) => state.cart
   )
   const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       form.values.receiver &&
       form.values.address &&
       form.values.city &&
-      form.values.zipCode &&
+      form.values.cep &&
       form.values.number
     ) {
       dispatch(payment())
@@ -62,6 +63,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
     } else {
       alert('Preencha antes os dados obrigatórios!')
     }
+    console.log(pedido)
   }
 
   const form = useFormik({
@@ -69,7 +71,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       receiver: '',
       address: '',
       city: '',
-      zipCode: '',
+      cep: '',
       number: '',
       locationPlusInfo: '',
       cardName: '',
@@ -82,7 +84,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       receiver: Yup.string().required('Campo obrigatório'),
       address: Yup.string().required('Campo obrigatório'),
       city: Yup.string().required('Campo obrigatório'),
-      zipCode: Yup.string().required('Campo obrigatório'),
+      cep: Yup.string().required('Campo obrigatório'),
       number: Yup.string().required('Campo obrigatório'),
       cardName: Yup.string().when((values, schema) =>
         isPayment ? schema.required('O campo é obrigatório') : schema
@@ -108,7 +110,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             city: values.city,
             description: values.address,
             number: Number(values.number),
-            zipCode: values.zipCode,
+            zipCode: values.cep,
             complement: values.locationPlusInfo
           }
         },
@@ -187,17 +189,17 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
         </S.InputGroup>
         <div className="CEPNumber">
           <S.InputGroup>
-            <label htmlFor="zipCode">CEP</label>
-            <input
-              type="number"
-              required
-              id="zipCode"
-              name="zipCode"
+            <label htmlFor="cep">CEP</label>
+            <InputMask
+              mask="99.999-999"
+              type="text"
+              id="cep"
+              name="cep"
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              value={form.values.zipCode}
+              value={form.values.cep}
             />
-            <small>{getErroMassage('zipCode', form.errors.zipCode)}</small>
+            <small>{getErroMassage('cep', form.errors.cep)}</small>
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="number">Número</label>
@@ -252,8 +254,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
         <div className="fieldContainer">
           <S.InputGroup>
             <label htmlFor="cardNumber">Número do cartão</label>
-            <input
-              type="number"
+            <InputMask
+              mask="9999.9999.9999.9999"
+              type="text"
               required
               id="cardNumber"
               name="cardNumber"
@@ -267,8 +270,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="cardCode">CVV</label>
-            <input
-              type="number"
+            <InputMask
+              mask="999"
+              type="text"
               required
               id="cardCode"
               name="cardCode"
@@ -282,8 +286,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
         <div className="fieldContainer">
           <S.InputGroup>
             <label htmlFor="expiresMonth">Mês de vencimento</label>
-            <input
-              type="number"
+            <InputMask
+              mask="99"
+              type="text"
               required
               id="expiresMonth"
               name="expiresMonth"
@@ -297,8 +302,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="expiresYear">Ano de vencimento</label>
-            <input
-              type="number"
+            <InputMask
+              mask="99"
+              type="text"
               required
               id="expiresYear"
               name="expiresYear"
