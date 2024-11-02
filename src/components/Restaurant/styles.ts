@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branca};
+  background-color: ${colors.white};
   position: relative;
-  border: solid 1px ${cores.laranja};
+  border: solid 1px ${colors.orange};
 
   img {
     max-width: 472px;
@@ -36,14 +36,14 @@ export const Card = styled.div`
   }
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-weight: bold;
   font-size: 18px;
   display: block;
   margin-top: 8px;
   margin-bottom: 16px;
 `
-export const Descriçao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   display: block;

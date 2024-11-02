@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom'
-import { HeroBar, HeroLogo, HeroTitle } from './styles'
 
 import logo from '../../asset/images/logo.svg'
 
+import * as S from './styles'
+
 const Hero = () => (
-  <HeroBar>
+  <S.HeroBar>
     <Link to="/">
-      <HeroLogo src={logo} alt="Logo do Restaurente Efood" />
+      <S.HeroLogo src={logo} alt="Logo do Restaurente Efood" />
     </Link>
-    <HeroTitle>
+    <S.HeroTitle>
       Viva experiências gastronômicas no conforto da sua casa
-    </HeroTitle>
-  </HeroBar>
+    </S.HeroTitle>
+  </S.HeroBar>
 )
 
 export default Hero

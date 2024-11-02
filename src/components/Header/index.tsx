@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-
-import { HeaderBar, CartButton, Text } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 
 import logo from '../../asset/images/logo.svg'
+
+import * as S from './styles'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -17,17 +17,17 @@ const Header = () => {
   }
 
   return (
-    <HeaderBar>
+    <S.HeaderBar>
       <div className="HeaderBarContainer">
-        <Text>Restaurante</Text>
+        <S.Text>Restaurante</S.Text>
         <Link to="/">
           <img src={logo} alt="Efood Logo" />
         </Link>
-        <CartButton onClick={openCart} href="#">
+        <S.CartButton onClick={openCart} href="#">
           {pedido.length} produto(s) no carrinho
-        </CartButton>
+        </S.CartButton>
       </div>
-    </HeaderBar>
+    </S.HeaderBar>
   )
 }
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
-  background-color: ${cores.laranja};
-  color: ${cores.cremeEscuro};
+  background-color: ${colors.orange};
+  color: ${colors.darkCream};
   max-width: 100%;
   width: 100%;
   display: flex;
@@ -30,20 +30,20 @@ export const Photo = styled.img`
   }
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 16px;
   font-weight: 900;
   margin: 8px 0;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   margin-bottom: 8px;
 `
 
 export const AddCarrinho = styled(Link)`
-  background-color: ${cores.cremeEscuro};
-  color: ${cores.laranja};
+  background-color: ${colors.darkCream};
+  color: ${colors.orange};
   border: none;
   padding: 4px 7px;
 

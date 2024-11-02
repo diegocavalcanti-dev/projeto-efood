@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { AddButton } from '../Cart/styles'
 
 export const DeliverySection = styled.div`
@@ -15,7 +15,7 @@ export const DeliverySection = styled.div`
   .buttomContainer {
     margin-top: 24px;
   }
-  color: ${cores.cremeEscuro};
+  color: ${colors.darkCream};
   h2 {
     font-weight: 700;
     font-size: 16px;
@@ -38,13 +38,13 @@ export const InputGroup = styled.div`
   input {
     width: 100%;
     padding: 8px;
-    background-color: ${cores.cremeEscuro};
-    border: 1px solid ${cores.cremeEscuro};
+    background-color: ${colors.darkCream};
+    border: 1px solid ${colors.darkCream};
     margin: 8px 0;
   }
 `
 export const PaymentSection = styled.div`
-  color: ${cores.cremeEscuro};
+  color: ${colors.darkCream};
   display: none;
   &.is-open {
     display: block;
@@ -76,7 +76,7 @@ export const PaymentSection = styled.div`
   }
 `
 export const ConfirmedSection = styled.div`
-  color: ${cores.cremeEscuro};
+  color: ${colors.darkCream};
   display: none;
 
   p {

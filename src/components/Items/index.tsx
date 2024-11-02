@@ -1,4 +1,4 @@
-import { AddCarrinho, Card, Descricao, Photo, Titulo } from './styles'
+import * as S from './styles'
 
 export type Props = {
   ItemImage: string
@@ -20,14 +20,14 @@ const Items = ({
   ItemDescription,
   ItemPhotoAlt
 }: Props) => (
-  <Card>
-    <Photo src={ItemImage} alt={ItemPhotoAlt} />
-    <Titulo>{ItemTitle}</Titulo>
-    <Descricao>{lowerDescription(ItemDescription)}</Descricao>
-    <AddCarrinho to={''} title="Clique aqui para adicionar ao carrinho">
+  <S.Card>
+    <S.Photo src={ItemImage} alt={ItemPhotoAlt} />
+    <S.Title>{ItemTitle}</S.Title>
+    <S.Description>{lowerDescription(ItemDescription)}</S.Description>
+    <S.AddCarrinho to={''} title="Clique aqui para adicionar ao carrinho">
       Adicionar ao carrinho
-    </AddCarrinho>
-  </Card>
+    </S.AddCarrinho>
+  </S.Card>
 )
 
 export default Items

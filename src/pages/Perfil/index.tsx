@@ -4,12 +4,13 @@ import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
 import ItemsList from '../../components/ItemsList'
-import Cart from '../../components/Cart'
 
+import Cart from '../../components/Cart'
 import { useGetRestauranteSelectedQuery } from '../../services/api'
 
 const Perfil = () => {
   const { id } = useParams()
+
   const { data: restaurante } = useGetRestauranteSelectedQuery(id!)
 
   if (restaurante) {

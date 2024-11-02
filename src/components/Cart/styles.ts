@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import bin from '../../asset/images/bin.png'
 
 export const CartContainer = styled.div`
@@ -30,7 +30,7 @@ export const Overlay = styled.div`
 export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   z-index: 1;
   padding: 32px 8px;
   max-width: 360px;
@@ -44,21 +44,39 @@ export const Sidebar = styled.aside`
 `
 
 export const AddButton = styled.button`
-  background-color: ${cores.cremeEscuro};
-  color: ${cores.laranja};
-  border: none;
-  padding: 4px;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
+  background-color: ${colors.darkCream};
+  color: ${colors.orange};
   font-size: 14px;
   display: block;
   width: 100%;
+  border: none;
+  text-align: center;
+  padding: 4px;
+  font-weight: 700;
+  text-decoration: none;
   cursor: pointer;
 `
 
+export const WarningMessage = styled.p`
+  color: ${colors.yellow};
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  animation: fadeIn 0.5s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`
+
 export const CartItem = styled.li`
-  background-color: ${cores.cremeEscuro};
+  background-color: ${colors.darkCream};
   display: flex;
   padding: 8px;
   position: relative;
@@ -103,7 +121,7 @@ export const InfosCart = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 40px 0 16px 0;
-  color: ${cores.cremeClaro};
+  color: ${colors.lightCream};
   weight: 700;
   font-size: 14px;
 `

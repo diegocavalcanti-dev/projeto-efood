@@ -1,6 +1,7 @@
 import RestaurantList from '../../components/RestaurantList'
 import Hero from '../../components/Hero'
 import Footer from '../../components/Footer'
+
 import { useGetRestaurantesQuery } from '../../services/api'
 
 export type Pedido = {

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 import heroBackground from '../../asset/images/fundo.png'
 
@@ -29,7 +29,7 @@ export const HeaderBar = styled.header`
 `
 
 export const Text = styled.p`
-  color: ${cores.laranja};
+  color: ${colors.orange};
   font-size: 18px;
   font-weight: bold;
 
@@ -45,7 +45,7 @@ export const HeaderLogo = styled.img`
 `
 
 export const CartButton = styled.a`
-  color: ${cores.laranja};
+  color: ${colors.orange};
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;

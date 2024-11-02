@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { AddCarrinho } from '../Items/styles'
 
 export const Container = styled.section`
@@ -71,7 +71,7 @@ export const ModalContainer = styled.div`
 
 export const ModalContent = styled.div`
   max-width: 1024px;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   padding: 32px;
   display: flex;
   flex-direction: row;
@@ -99,7 +99,7 @@ export const FoodImage = styled.img`
 export const FoodTitle = styled.h3`
   font-size: 18px;
   font-weight: 900;
-  color: ${cores.cremeClaro};
+  color: ${colors.lightCream};
   margin-bottom: 16px;
 `
 export const CloseIcon = styled.img`
@@ -112,14 +112,14 @@ export const CloseIcon = styled.img`
 export const FoodDescription = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: ${cores.cremeClaro};
+  color: ${colors.lightCream};
   line-height: 22px;
   margin-bottom: 16px;
 `
 
 export const AddToCartButton = styled.button`
-  background-color: ${cores.cremeEscuro};
-  color: ${cores.laranja};
+  background-color: ${colors.darkCream};
+  color: ${colors.orange};
   border: none;
   cursor: pointer;
   padding: 4px 7px;

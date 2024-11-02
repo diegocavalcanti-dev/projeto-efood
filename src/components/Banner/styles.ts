@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   width: 100%;
   height: 280px;
   background-repeat: no-repeat;
@@ -42,16 +42,16 @@ export const Imagem = styled.div`
   }
 `
 
-export const Categoria = styled.p`
+export const Category = styled.p`
   font-size: 32px;
-  color: ${cores.branca};
+  color: ${colors.white};
   font-weight: 100;
   line-height: 38px;
 `
 
-export const Titulo = styled.p`
+export const Title = styled.p`
   font-size: 32px;
-  color: ${cores.branca};
+  color: ${colors.white};
   margin-top: 156px;
   font-weight: bold;
 `

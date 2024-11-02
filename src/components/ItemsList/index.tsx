@@ -2,34 +2,18 @@ import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 
 import Items from '../Items'
+
 import { Pedido, Restaurante } from '../../pages/Home'
 import { addItem, open } from '../../store/reducers/cart'
-
-import {
-  CloseIcon,
-  Container,
-  FoodDescription,
-  FoodImage,
-  FoodTitle,
-  List,
-  Modal,
-  ModalContainer,
-  AddToCartButton,
-  ModalContent
-} from './styles'
+import { parseToBrl } from '../../utils'
 
 import fechar from '../../asset/images/close-modal-icon.png'
+
+import * as S from './styles'
 
 export type Props = {
   restaurante: Restaurante
   pedido: Pedido
-}
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const ItemsList = ({ restaurante, pedido }: Props) => {
@@ -54,8 +38,8 @@ const ItemsList = ({ restaurante, pedido }: Props) => {
 
   return (
     <>
-      <Container>
-        <List>
+      <S.Container>
+        <S.List>
           {restaurante.cardapio.map((menu) => (
             <li
               key={menu.id}
@@ -78,30 +62,30 @@ const ItemsList = ({ restaurante, pedido }: Props) => {
               />
             </li>
           ))}
-        </List>
-      </Container>
-      <Modal className={modalEstaAberto ? 'visivel' : ''}>
-        <ModalContent>
-          <FoodImage src={modalItemImage} />
-          <ModalContainer>
-            <FoodTitle>{modalItemTitle}</FoodTitle>
-            <FoodDescription>{modalItemDescription}</FoodDescription>
-            <FoodDescription>{modalItemServe}</FoodDescription>
-            <AddToCartButton onClick={addToCart}>
-              Adicionar ao carrinho - {formataPreco(modalItemPrice)}{' '}
-            </AddToCartButton>
-          </ModalContainer>
-          <CloseIcon
+        </S.List>
+      </S.Container>
+      <S.Modal className={modalEstaAberto ? 'visivel' : ''}>
+        <S.ModalContent>
+          <S.FoodImage src={modalItemImage} />
+          <S.ModalContainer>
+            <S.FoodTitle>{modalItemTitle}</S.FoodTitle>
+            <S.FoodDescription>{modalItemDescription}</S.FoodDescription>
+            <S.FoodDescription>{modalItemServe}</S.FoodDescription>
+            <S.AddToCartButton onClick={addToCart}>
+              Adicionar ao carrinho - {parseToBrl(modalItemPrice)}{' '}
+            </S.AddToCartButton>
+          </S.ModalContainer>
+          <S.CloseIcon
             src={fechar}
             alt="Fechar"
             onClick={() => setModalEstaAberto(false)}
           />
-        </ModalContent>
+        </S.ModalContent>
         <div
           onClick={() => setModalEstaAberto(false)}
           className="overlay"
         ></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

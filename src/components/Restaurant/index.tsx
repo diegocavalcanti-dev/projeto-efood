@@ -1,9 +1,9 @@
 import Button from '../Button'
 import Tag from '../Tag'
-import estrela from '../../asset/images/estrela.svg'
-
-import { Card, Titulo, Descriçao, Categories, Review } from './styles'
 import { lowerDescription } from '../Items'
+
+import estrela from '../../asset/images/estrela.svg'
+import * as S from './styles'
 
 type Props = {
   RestaurantTitle: string
@@ -23,29 +23,29 @@ const Restaurant = ({
   id
 }: Props) => {
   return (
-    <Card>
+    <S.Card>
       <img src={RestaurantImage} alt={RestaurantTitle} />
-      <Categories>
+      <S.Categories>
         {RestaurantCategories.map((info) => {
           if (info) {
             return <Tag key={info}>{info}</Tag>
           }
         })}
-      </Categories>
+      </S.Categories>
       <div className="ContainerTop">
-        <Titulo>{RestaurantTitle}</Titulo>
-        <Review>
+        <S.Title>{RestaurantTitle}</S.Title>
+        <S.Review>
           <h2>{RestaurantRate}</h2>
           <img src={estrela} alt="Estrela de Avaliação" />
-        </Review>
+        </S.Review>
       </div>
-      <Descriçao>{lowerDescription(RestaurantDescription)}</Descriçao>
+      <S.Description>{lowerDescription(RestaurantDescription)}</S.Description>
       <div className="botao">
         <Button type="button" to={`/perfil/${id}`} title="Saiba mais">
           Saiba mais
         </Button>
       </div>
-    </Card>
+    </S.Card>
   )
 }
 

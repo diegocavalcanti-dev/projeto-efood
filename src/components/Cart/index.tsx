@@ -1,27 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
 
 import Checkout from '../Checkout'
 
 import { RootReducer } from '../../store'
 import { close, remove, startCheckout } from '../../store/reducers/cart'
-import { formataPreco } from '../ItemsList'
+import { parseToBrl } from '../../utils'
 
-import {
-  Overlay,
-  CartContainer,
-  AddButton,
-  Sidebar,
-  CartItem,
-  InfosItem,
-  InfosCart,
-  CartStage
-} from './styles'
+import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, pedido, isAddress, isCart } = useSelector(
     (state: RootReducer) => state.cart
   )
   const dispatch = useDispatch()
+  const [showWarning, setShowWarning] = useState(false) // Adicionando o estado showWarning
 
   const closeCart = () => {
     dispatch(close())
@@ -32,7 +25,12 @@ const Cart = () => {
   }
 
   const activeCheckout = () => {
-    dispatch(startCheckout())
+    if (getTotalPrice() > 0) {
+      dispatch(startCheckout())
+    } else {
+      setShowWarning(true)
+      setTimeout(() => setShowWarning(false), 3000)
+    }
   }
 
   const getTotalPrice = () => {
@@ -40,41 +38,39 @@ const Cart = () => {
       return (acumulador += valorAtual.preco)
     }, 0)
   }
-  // console.log('isCart: ' + isCart)
-  // console.log('isCart: ' + isCart)
-  // console.log('isCart: ' + isCart)
-  // console.log('isCart: ' + isCart)
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
-        <CartStage className={!isCart ? 'is-checkout' : ''}>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeCart} />
+      <S.Sidebar>
+        <S.CartStage className={!isCart ? 'is-checkout' : ''}>
           <ul>
             {pedido.map((item) => (
-              <CartItem key={item.id}>
+              <S.CartItem key={item.id}>
                 <img src={item.foto} alt="Imagem do prato" />
-                {/* img foi estilizado dentro da const CartItem  */}
-                <InfosItem>
+                <S.InfosItem>
                   <h3>{item.nome}</h3>
-                  <span>{formataPreco(item.preco)}</span>
-                </InfosItem>
+                  <span>{parseToBrl(item.preco)}</span>
+                </S.InfosItem>
                 <button type="button" onClick={() => deleteItem(item.id)} />
-                {/* button foi estilizado dentro da const CartItem */}
-              </CartItem>
+              </S.CartItem>
             ))}
           </ul>
-          <InfosCart>
+          <S.InfosCart>
             <p>Valor total</p>
-            <span>{formataPreco(getTotalPrice())}</span>
-          </InfosCart>
-          <AddButton onClick={activeCheckout}>
+            <span>{parseToBrl(getTotalPrice())}</span>
+          </S.InfosCart>
+          {showWarning && (
+            <S.WarningMessage>Não há itens no carrinho</S.WarningMessage>
+          )}
+          <S.AddButton onClick={activeCheckout}>
             Continuar com a entrega
-          </AddButton>
-        </CartStage>
+          </S.AddButton>
+        </S.CartStage>
         <Checkout checkoutStart={isAddress} priceTotal={getTotalPrice()} />
-      </Sidebar>
-    </CartContainer>
+      </S.Sidebar>
+    </S.CartContainer>
   )
 }
+
 export default Cart

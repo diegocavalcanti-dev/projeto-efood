@@ -1,20 +1,20 @@
-import { Categoria, Imagem, Titulo } from './styles'
+import * as S from './styles'
 
 type Props = {
-  categoria: string // Para a categoria
-  titulo: string // Para o título
-  bannerImgUrl: string // Para a imagem do banner
+  categoria: string
+  titulo: string
+  bannerImgUrl: string
 }
 
 const Banner = ({ categoria, titulo, bannerImgUrl }: Props) => (
-  <Imagem style={{ backgroundImage: `url(${bannerImgUrl})` }}>
+  <S.Image style={{ backgroundImage: `url(${bannerImgUrl})` }}>
     <div className="container">
       <div>
-        <Categoria>{categoria}</Categoria>
-        <Titulo>{titulo}</Titulo>
+        <S.Category>{categoria}</S.Category>
+        <S.Title>{titulo}</S.Title>
       </div>
     </div>
-  </Imagem>
+  </S.Image>
 )
 
 export default Banner

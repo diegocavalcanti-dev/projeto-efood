@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Container = styled.footer`
-  background-color: ${cores.cremeEscuro};
+  background-color: ${colors.darkCream};
   height: 298px;
   text-align: center;
 `

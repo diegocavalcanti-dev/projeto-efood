@@ -1,13 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styled, { createGlobalStyle } from 'styled-components'
 
-export const cores = {
-  laranja: '#E66767',
-  cremeClaro: '#FFF8F2',
-  cremeEscuro: '#FFEBD9',
-  branca: '#FFFFFF',
+export const colors = {
+  orange: '#E66767',
+  lightCream: '#FFF8F2',
+  darkCream: '#FFEBD9',
+  white: '#FFFFFF',
   rose: '#fae0e4', // Cor do Rodapé por exemplo
-  amarelo: '#FFB930'
+  yellow: '#FFB930'
 }
 
 export const breakpoints = {
@@ -26,7 +26,7 @@ export const GlobalCss = createGlobalStyle`
   }
 
   body {
-    background-color: ${cores.cremeClaro};
-    color: ${cores.laranja}
+    background-color: ${colors.lightCream};
+    color: ${colors.orange}
   }
 `

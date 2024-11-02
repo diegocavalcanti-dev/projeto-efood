@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { AddButton } from '../Cart/styles'
+import * as Yup from 'yup'
+import { useFormik } from 'formik'
 
+import { RootReducer } from '../../store'
+import { parseToBrl } from '../../utils'
+import { usePurchaseMutation } from '../../services/api'
 import {
   backtoCart,
   payment,
@@ -9,31 +13,28 @@ import {
   closeAndFinish
 } from '../../store/reducers/cart'
 
-import { formataPreco } from '../ItemsList'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-
-import { RootReducer } from '../../store'
-
-import {
-  DeliverySection,
-  InputGroup,
-  PaymentSection,
-  ConfirmedSection
-} from './styles'
+import { AddButton } from '../Cart/styles'
+import * as S from './styles'
 
 type Props = {
   checkoutStart?: boolean
   priceTotal: number
 }
 const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
+  const [purchase, { isSuccess, data }] = usePurchaseMutation()
+
   const { isPayment, isConfirmed } = useSelector(
     (state: RootReducer) => state.cart
   )
   const dispatch = useDispatch()
 
   const finish = () => {
-    dispatch(closeAndFinish())
+    if (dispatch(closeAndFinish())) {
+      console.log('Request: ' + data?.orderId)
+      console.log('Deu certo? ' + isSuccess)
+    } else {
+      console.log('Falhou tudo')
+    }
   }
   const backCart = () => {
     dispatch(backtoCart())
@@ -85,9 +86,38 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
       )
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        delivery: {
+          receiver: values.receiver,
+          address: {
+            city: values.city,
+            description: values.address,
+            number: Number(values.number),
+            zipCode: values.zipCode,
+            complement: values.locationPlusInfo
+          }
+        },
+        payment: {
+          card: {
+            name: values.cardName,
+            number: values.cardNumber,
+            code: Number(values.cardCode),
+            expires: {
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear)
+            }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 100
+          }
+        ]
+      })
     }
   })
+
   const getErroMassage = (campo: string, message?: string) => {
     const estaAlterado = campo in form.touched
     const estaInvalido = campo in form.errors
@@ -99,9 +129,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
   // DeliverContainer
   return (
     <form onSubmit={form.handleSubmit}>
-      <DeliverySection className={checkoutStart ? 'is-open' : ''}>
+      <S.DeliverySection className={checkoutStart ? 'is-open' : ''}>
         <h2>Entrega</h2>
-        <InputGroup>
+        <S.InputGroup>
           <label htmlFor="receiver">Quem irá receber</label>
           <input
             type="text"
@@ -113,8 +143,8 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             value={form.values.receiver}
           />
           <small>{getErroMassage('receiver', form.errors.receiver)}</small>
-        </InputGroup>
-        <InputGroup>
+        </S.InputGroup>
+        <S.InputGroup>
           <label htmlFor="address">Endereço</label>
           <input
             type="text"
@@ -126,8 +156,8 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             value={form.values.address}
           />
           <small>{getErroMassage('address', form.errors.address)}</small>
-        </InputGroup>
-        <InputGroup>
+        </S.InputGroup>
+        <S.InputGroup>
           <label htmlFor="city">Cidade</label>
           <input
             type="text"
@@ -139,12 +169,12 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             value={form.values.city}
           />
           <small>{getErroMassage('city', form.errors.city)}</small>
-        </InputGroup>
+        </S.InputGroup>
         <div className="CEPNumber">
-          <InputGroup>
+          <S.InputGroup>
             <label htmlFor="zipCode">CEP</label>
             <input
-              type="text"
+              type="number"
               required
               id="zipCode"
               name="zipCode"
@@ -153,11 +183,11 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.zipCode}
             />
             <small>{getErroMassage('zipCode', form.errors.zipCode)}</small>
-          </InputGroup>
-          <InputGroup>
+          </S.InputGroup>
+          <S.InputGroup>
             <label htmlFor="number">Número</label>
             <input
-              type="text"
+              type="number"
               required
               id="number"
               name="number"
@@ -166,9 +196,9 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.number}
             />
             <small>{getErroMassage('number', form.errors.number)}</small>
-          </InputGroup>
+          </S.InputGroup>
         </div>
-        <InputGroup>
+        <S.InputGroup>
           <label htmlFor="locationPlusInfo">Complemento (opcional)</label>
           <input
             type="text"
@@ -181,17 +211,17 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
           {/* <small>
             {getErroMassage('locationPlusInfo', form.errors.locationPlusInfo)}
           </small> */}
-        </InputGroup>
+        </S.InputGroup>
         <div className="buttomContainer">
           <AddButton type="submit" onClick={activePayment}>
             Continuar com o pagamento
           </AddButton>
           <AddButton onClick={backCart}>Voltar ao carrinho</AddButton>
         </div>
-      </DeliverySection>
-      <PaymentSection className={isPayment ? 'is-open' : ''}>
-        <p>Pagamento - Valor a pagar {formataPreco(priceTotal)}</p>
-        <InputGroup>
+      </S.DeliverySection>
+      <S.PaymentSection className={isPayment ? 'is-open' : ''}>
+        <p>Pagamento - Valor a pagar {parseToBrl(priceTotal)}</p>
+        <S.InputGroup>
           <label htmlFor="cardName">Nome do cartão</label>
           <input
             type="text"
@@ -203,12 +233,12 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             value={form.values.cardName}
           />
           <small>{getErroMassage('cardName', form.errors.cardName)}</small>
-        </InputGroup>
+        </S.InputGroup>
         <div className="fieldContainer">
-          <InputGroup>
+          <S.InputGroup>
             <label htmlFor="cardNumber">Número do cartão</label>
             <input
-              type="text"
+              type="number"
               required
               id="cardNumber"
               name="cardNumber"
@@ -219,11 +249,11 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             <small>
               {getErroMassage('cardNumber', form.errors.cardNumber)}
             </small>
-          </InputGroup>
-          <InputGroup>
+          </S.InputGroup>
+          <S.InputGroup>
             <label htmlFor="cardCode">CVV</label>
             <input
-              type="text"
+              type="number"
               required
               id="cardCode"
               name="cardCode"
@@ -232,13 +262,13 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
               value={form.values.cardCode}
             />
             <small>{getErroMassage('cardCode', form.errors.cardCode)}</small>
-          </InputGroup>
+          </S.InputGroup>
         </div>
         <div className="fieldContainer">
-          <InputGroup>
+          <S.InputGroup>
             <label htmlFor="expiresMonth">Mês de vencimento</label>
             <input
-              type="text"
+              type="number"
               required
               id="expiresMonth"
               name="expiresMonth"
@@ -249,11 +279,11 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             <small>
               {getErroMassage('expiresMonth', form.errors.expiresMonth)}
             </small>
-          </InputGroup>
-          <InputGroup>
+          </S.InputGroup>
+          <S.InputGroup>
             <label htmlFor="expiresYear">Ano de vencimento</label>
             <input
-              type="text"
+              type="number"
               required
               id="expiresYear"
               name="expiresYear"
@@ -264,20 +294,19 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
             <small>
               {getErroMassage('expiresYear', form.errors.expiresYear)}
             </small>
-          </InputGroup>
+          </S.InputGroup>
         </div>
         <div className="buttomContainer">
           <AddButton type="submit" onClick={activeConfirmed}>
             Finalizar pagamento
           </AddButton>
-
           <AddButton onClick={backAdress}>
             Voltar para a edição do endereço
           </AddButton>
         </div>
-      </PaymentSection>
-      <ConfirmedSection className={isConfirmed ? 'is-open' : ''}>
-        <h2>Pedido realizado - *******</h2>
+      </S.PaymentSection>
+      <S.ConfirmedSection className={isConfirmed && isSuccess ? 'is-open' : ''}>
+        <h2>Pedido realizado - {data?.orderId} </h2>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
           preparação e, em breve, será entregue no endereço fornecido. <br />
@@ -297,7 +326,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
         <div className="buttomContainer">
           <AddButton onClick={finish}>Concluir</AddButton>
         </div>
-      </ConfirmedSection>
+      </S.ConfirmedSection>
     </form>
   )
 }
