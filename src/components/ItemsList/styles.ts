@@ -23,15 +23,20 @@ export const List = styled.ul`
 
   @media (max-width: ${breakpoints.desktop}) {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: auto;
+    margin: 40px 10px;
+    row-gap: 30px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr 1fr;
+    margin: 40px 10px;
+    row-gap: 30px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
     grid-template-columns: 1fr;
-    margin: 0 10px;
-    row-gap: 10px;
-    margin: auto;
+    margin: 40px 10px;
+    row-gap: 30px;
   }
 `
 

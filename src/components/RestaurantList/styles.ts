@@ -7,12 +7,11 @@ export const Container = styled.div`
   margin-bottom: 120px;
 
   @media (max-width: ${breakpoints.desktop}) {
-    max-width: 99%;
+    margin: 60px 20px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    marginright: 40px;
-    max-width: 99%;
+    margin: 60px 20px;
   }
 `
 
@@ -24,8 +23,11 @@ export const List = styled.ul`
 
   @media (max-width: ${breakpoints.desktop}) {
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
-  @media (max-width: ${breakpoints.tablet}) {
+  @media (max-width: ${breakpoints.mobile}) {
     grid-template-columns: 1fr;
+    margin: 0 10px;
+    gap: 20px;
   }
 `

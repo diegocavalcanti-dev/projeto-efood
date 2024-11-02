@@ -24,7 +24,7 @@ const Header = () => {
           <img src={logo} alt="Efood Logo" />
         </Link>
         <CartButton onClick={openCart} href="#">
-          {pedido.length} produto(s) no carinho
+          {pedido.length} produto(s) no carrinho
         </CartButton>
       </div>
     </HeaderBar>

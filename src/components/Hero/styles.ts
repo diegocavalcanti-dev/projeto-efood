@@ -33,4 +33,9 @@ export const HeroTitle = styled.h4`
   font-size: 36px;
   text-align: center;
   margin-bottom: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 30px;
+    margin-top: 10px;
+  }
 `

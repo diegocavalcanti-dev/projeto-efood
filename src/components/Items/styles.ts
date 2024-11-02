@@ -21,6 +21,12 @@ export const Photo = styled.img`
 
   @media (max-width: ${breakpoints.tablet}) {
     object-fit: cover;
+    max-width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    object-fit: cover;
+    max-width: 100%;
   }
 `
 

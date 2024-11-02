@@ -18,8 +18,12 @@ export const HeaderBar = styled.header`
     align-items: center;
     margin: 0 auto;
 
+    @media (max-width: ${breakpoints.tablet}) {
+      max-width: 90%;
+    }
+
     @media (max-width: ${breakpoints.desktop}) {
-      padding: 39px 10px;
+      max-width: 90%;
     }
   }
 `
@@ -28,6 +32,10 @@ export const Text = styled.p`
   color: ${cores.laranja};
   font-size: 18px;
   font-weight: bold;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 
 export const HeaderLogo = styled.img`

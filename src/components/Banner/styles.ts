@@ -9,6 +9,10 @@ export const Imagem = styled.div`
   padding-top: 26px;
   position: relative;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 100%;
+  }
+
   .container {
     max-width: 1024px;
     position: relative;
@@ -16,8 +20,14 @@ export const Imagem = styled.div`
     display: block;
     z-index: 1;
 
+    @media (max-width: ${breakpoints.tablet}) {
+      max-width: 90%;
+      padding-bottom: 10px;
+    }
+
     @media (max-width: ${breakpoints.desktop}) {
       max-width: 90%;
+      padding-bottom: 10px;
     }
   }
 

@@ -47,7 +47,6 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
   const activeConfirmed = () => {
     dispatch(confirmed())
   }
-  // console.log(checkoutStart)
 
   const form = useFormik({
     initialValues: {

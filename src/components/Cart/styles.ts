@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import bin from '../../asset/images/bin.png'
 
 export const CartContainer = styled.div`
@@ -37,6 +37,10 @@ export const Sidebar = styled.aside`
   width: 100%;
   position: relative;
   overflow-y: scroll;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 90%;
+  }
 `
 
 export const AddButton = styled.button`

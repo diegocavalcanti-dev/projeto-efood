@@ -9,10 +9,16 @@ export const Card = styled.div`
 
   img {
     max-width: 472px;
-    width: 472px;
+    width: 100%;
     object-fit: cover;
     max-height: 217px;
     height: 217px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      max-width: 472px;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   .botao {
