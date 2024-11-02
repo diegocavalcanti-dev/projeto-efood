@@ -4,14 +4,18 @@ import Header from '../../components/Header'
 import Banner from '../../components/Banner'
 import Footer from '../../components/Footer'
 import ItemsList from '../../components/ItemsList'
-
 import Cart from '../../components/Cart'
+import Loader from '../../components/Loader'
+
 import { useGetRestauranteSelectedQuery } from '../../services/api'
 
-const Perfil = () => {
-  const { id } = useParams()
+type RestaurantParams = {
+  id: string
+}
 
-  const { data: restaurante } = useGetRestauranteSelectedQuery(id!)
+const Perfil = () => {
+  const { id } = useParams() as RestaurantParams
+  const { data: restaurante } = useGetRestauranteSelectedQuery(id)
 
   if (restaurante) {
     return (
@@ -36,7 +40,7 @@ const Perfil = () => {
       </>
     )
   }
-  return <h3>Carregando...</h3>
+  return <Loader />
 }
 
 export default Perfil

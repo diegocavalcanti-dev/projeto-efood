@@ -29,12 +29,7 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
   const dispatch = useDispatch()
 
   const finish = () => {
-    if (dispatch(closeAndFinish())) {
-      console.log('Request: ' + data?.orderId)
-      console.log('Deu certo? ' + isSuccess)
-    } else {
-      console.log('Falhou tudo')
-    }
+    dispatch(closeAndFinish())
   }
   const backCart = () => {
     dispatch(backtoCart())
@@ -43,10 +38,30 @@ const Checkout = ({ checkoutStart = false, priceTotal = 0 }: Props) => {
     dispatch(startCheckout())
   }
   const activePayment = () => {
-    dispatch(payment())
+    if (
+      form.values.receiver &&
+      form.values.address &&
+      form.values.city &&
+      form.values.zipCode &&
+      form.values.number
+    ) {
+      dispatch(payment())
+    } else {
+      alert('Preencha antes os dados obrigatórios!')
+    }
   }
   const activeConfirmed = () => {
-    dispatch(confirmed())
+    if (
+      form.values.cardName &&
+      form.values.cardNumber &&
+      form.values.cardCode &&
+      form.values.expiresYear &&
+      form.values.expiresYear
+    ) {
+      dispatch(confirmed())
+    } else {
+      alert('Preencha antes os dados obrigatórios!')
+    }
   }
 
   const form = useFormik({

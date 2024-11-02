@@ -61,7 +61,9 @@ const Cart = () => {
             <span>{parseToBrl(getTotalPrice())}</span>
           </S.InfosCart>
           {showWarning && (
-            <S.WarningMessage>Não há itens no carrinho</S.WarningMessage>
+            <S.WarningMessage>
+              Adicione pelo menos um produto para continuar com a compra
+            </S.WarningMessage>
           )}
           <S.AddButton onClick={activeCheckout}>
             Continuar com a entrega
