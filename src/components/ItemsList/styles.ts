@@ -67,6 +67,11 @@ export const Modal = styled.div`
 export const ModalContainer = styled.div`
   max-width: 656px;
   width: 100%;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const ModalContent = styled.div`
@@ -94,6 +99,16 @@ export const FoodImage = styled.img`
   widht: 100%;
   max-height: 280px;
   height: 280px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    height: auto;
+  }
 `
 
 export const FoodTitle = styled.h3`
@@ -101,12 +116,37 @@ export const FoodTitle = styled.h3`
   font-weight: 900;
   color: ${colors.lightCream};
   margin-bottom: 16px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 12px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    margin-top: 12px;
+  }
 `
 export const CloseIcon = styled.img`
   max-width: 16px;
   max-height: 16px;
+  top: 8px;
+  right: 8px;
   width: 100%;
   cursor: pointer;
+  position: absolute;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    z-index: 1;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    z-index: 1;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+  }
 `
 
 export const FoodDescription = styled.p`

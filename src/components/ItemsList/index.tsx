@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 import Items from '../Items'
 
-import { Pedido, Restaurante } from '../../pages/Home'
 import { addItem, open } from '../../store/reducers/cart'
 import { parseToBrl } from '../../utils'
 
